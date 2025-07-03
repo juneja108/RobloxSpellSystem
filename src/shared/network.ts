@@ -1,6 +1,11 @@
 import { Networking } from "@flamework/networking";
 
-interface ClientToServerEvents {}
+interface ClientToServerEvents {
+    spells_sprint() : null
+    spells_stop_sprint() : null
+
+    test(): null
+}
 
 interface ServerToClientEvents {}
 
