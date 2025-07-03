@@ -20,7 +20,71 @@ import { Players } from "@rbxts/services";
 import { Event } from "shared/eventLifecycle";
 
 @Service({})
-export class ValueHandler {
+export class ValueHandler implements OnStart{
+    onStart(): void {
+        task.spawn(() => {
+            while(true) {
+                for (const player of Players.GetPlayers()) {
+                    const spellValues = player.FindFirstChild("spellValues");
+                    
+                    const stamina = spellValues?.FindFirstChild("stamina");
+                    const amountStamina = stamina?.FindFirstChild("amount")
+                    const maxStamina =  stamina?.FindFirstChild("max")
+                    const canReplenishStamina = stamina?.FindFirstChild("canReplenish")
+
+                    const mana = spellValues?.FindFirstChild("mana");
+                    const amountMana = mana?.FindFirstChild("amount");
+                    const maxMana = mana?.FindFirstChild("max");
+                    const canReplenishMana = mana?.FindFirstChild("canReplenish");
+
+                    if (
+                        amountStamina &&
+                        amountStamina.IsA("NumberValue") &&
+                        maxStamina && 
+                        maxStamina.IsA("NumberValue") &&
+                        canReplenishStamina &&
+                        canReplenishStamina.IsA("BoolValue") &&
+                        amountMana &&
+                        amountMana.IsA("NumberValue") &&
+                        maxMana && 
+                        maxMana.IsA("NumberValue") &&
+                        canReplenishMana &&
+                        canReplenishMana.IsA("BoolValue")
+                    ) {
+                        if (canReplenishStamina.Value === true && amountStamina.Value < maxStamina.Value) {
+                            amountStamina.Value += 1
+                        }
+                        if (canReplenishMana.Value === true && amountMana.Value < maxMana.Value) {
+                            amountMana.Value += 1
+                        }
+                    }
+                }
+
+                task.wait(1);
+            }
+        })
+
+        /*
+        task.spawn(() => {
+            while(task.wait(1)) {
+                if (
+                    canReplenishStamina.Value === true && 
+                    amountStamina.Value < maxStamina.Value
+                ) {
+                    amountStamina.Value += 1
+                }  
+
+                if (
+                    canReplenishMana.Value === true &&
+                    amountMana.Value < maxMana.Value
+                ) {
+                    amountMana.Value += 1
+                }
+            }
+        })
+        */
+    }
+    
     @Event(Players.PlayerAdded)
     playerAdded(player: Player) {
         const spellValues = new Instance("Folder", player);
@@ -57,23 +121,5 @@ export class ValueHandler {
         const canReplenishMana = new Instance("BoolValue", mana);
         canReplenishMana.Name = "canReplenish";
         canReplenishMana.Value = true;
-
-        task.spawn(() => {
-            while(task.wait(1)) {
-                if (
-                    canReplenishStamina.Value === true && 
-                    amountStamina.Value < maxStamina.Value
-                ) {
-                    amountStamina.Value += 1
-                }  
-
-                if (
-                    canReplenishMana.Value === true &&
-                    amountMana.Value < maxMana.Value
-                ) {
-                    amountMana.Value += 1
-                }
-            }
-        })
     }
 }
