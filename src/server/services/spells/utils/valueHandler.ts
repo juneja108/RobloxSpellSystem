@@ -63,26 +63,6 @@ export class ValueHandler implements OnStart{
                 task.wait(1);
             }
         })
-
-        /*
-        task.spawn(() => {
-            while(task.wait(1)) {
-                if (
-                    canReplenishStamina.Value === true && 
-                    amountStamina.Value < maxStamina.Value
-                ) {
-                    amountStamina.Value += 1
-                }  
-
-                if (
-                    canReplenishMana.Value === true &&
-                    amountMana.Value < maxMana.Value
-                ) {
-                    amountMana.Value += 1
-                }
-            }
-        })
-        */
     }
     
     @Event(Players.PlayerAdded)
