@@ -28,6 +28,10 @@ export function ValueBar({ text, colour, value, maximum }: ValueBarProps) {
                 TextScaled={true}
                 TextColor3={Color3.fromRGB(255, 255, 255)}
                 ZIndex={999}
+                Size={UDim2.fromScale(1, 1)} 
+                TextXAlignment={"Left"}
+                TextYAlignment={"Center"}
+                BackgroundTransparency={1}
             />
         </frame>
     );
