@@ -7,7 +7,10 @@ interface ClientToServerEvents {
     test(): null
 }
 
-interface ServerToClientEvents {}
+interface ServerToClientEvents {
+    response_spells_started_sprinting() : null
+    response_spells_stopped_sprinting() : null
+}
 
 interface ClientToServerFunctions {}
 
@@ -15,3 +18,4 @@ interface ServerToClientFunctions {}
 
 export const GlobalEvents = Networking.createEvent<ClientToServerEvents, ServerToClientEvents>();
 export const GlobalFunctions = Networking.createFunction<ClientToServerFunctions, ServerToClientFunctions>();
+ 

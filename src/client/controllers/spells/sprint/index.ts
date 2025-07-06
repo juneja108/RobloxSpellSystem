@@ -5,6 +5,8 @@ import { Event } from "shared/eventLifecycle";
 
 @Controller({})
 export class Sprint {
+    sprintBillBoardGUI: BillboardGui | undefined;
+
     @Event(UserInputService.InputBegan)
     startSprinting(input: InputObject, gameProcessed: boolean) {
         if (gameProcessed) {return}
