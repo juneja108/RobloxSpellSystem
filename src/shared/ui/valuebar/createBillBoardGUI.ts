@@ -6,7 +6,7 @@ export function createBillBoardGUI(offset: Vector3) : BillboardGui {
             - Parent
             - Name
             - Adornee
-        of the BillBoardGUI because this function simply returns an `Instance` that has certain properties configured for the game!
+        of the BillBoardGUI because this function simply returns a `BillboardGui` that has certain properties configured for the game!
     */
 
     let billBoardGUI = new Instance("BillboardGui");

@@ -1,5 +1,6 @@
 import { useEventListener } from "@rbxts/pretty-react-hooks";
-import React, { useEffect, useState } from "@rbxts/react";
+import React, { useEffect, useRef, useState } from "@rbxts/react";
+import { TweenService } from "@rbxts/services";
 
 export interface ValueBarProps {
     text: string;
