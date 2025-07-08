@@ -2,7 +2,6 @@ import { Events, Functions } from "server/network";
 
 import { Service, OnStart } from "@flamework/core";
 import { Event } from "shared/eventLifecycle";
-import { Players } from "@rbxts/services";
 import { constants } from "./constants";
 
 @Service({})
@@ -62,7 +61,7 @@ export class Sprint{
             this.sprintingPlayers.remove(this.sprintingPlayers.findIndex(p => p === player));
             canReplenish.Value = true
             humanoid.WalkSpeed = constants.walkspeed
-            Events.response_spells_stopped_sprinting.fire(player);
+            Events.response_spells_stopped_sprinting.fire(player); // deletes UI on the client
         }
     }
 }

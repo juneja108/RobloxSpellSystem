@@ -1,5 +1,5 @@
 {
-	"name": "flamework-game",
+	"name": "roblox_spell_system_showcase",
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json"
