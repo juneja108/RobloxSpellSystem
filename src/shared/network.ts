@@ -8,8 +8,7 @@ interface ClientToServerEvents {
 }
 
 interface ServerToClientEvents {
-    response_spells_started_sprinting() : null
-    response_spells_stopped_sprinting() : null
+
 }
 
 interface ClientToServerFunctions {}

@@ -30,7 +30,6 @@ export class Sprint{
                 this.sprintingPlayers.push(player);
 
                 humanoid.WalkSpeed = constants.runSpeed;
-                Events.response_spells_started_sprinting.fire(player) // triggers the UI on the client
                 print("fired")
                 
                 task.spawn(() => {
@@ -62,7 +61,6 @@ export class Sprint{
             this.sprintingPlayers.remove(this.sprintingPlayers.findIndex(p => p === player));
             canReplenish.Value = true
             humanoid.WalkSpeed = constants.walkspeed
-            Events.response_spells_stopped_sprinting.fire(player);
         }
     }
 }
